@@ -60,7 +60,7 @@ ssh -t $user@$arm 'git clone '$DAPPER_GIT' ~/TransProc'
 ssh -t $user@$x86 'cd TransProc; make; make vdso'
 ssh -t $user@$arm 'cd TransProc; make; make vdso'
 
-ssh -t $user@$arm 'scp ~/TransProc/criu-3.15/lib/py/templates/aarch64_vdso.img.tmpl x86:~/TransProc/criu-3.15/lib/py/templates/aarch64_vdso.img.tmpl'
+ssh -t $user@$arm 'scp ~/TransProc/criu-3.15/lib/py/templates/images_vdso.img.tmpl x86:~/TransProc/criu-3.15/lib/py/templates/images_vdso.img.tmpl'
 ssh -t $user@$x86 'scp ~/TransProc/criu-3.15/lib/py/templates/x86_64_vdso.img.tmpl arm:~/TransProc/criu-3.15/lib/py/templates/x86_64_vdso.img.tmpl'
 }
 

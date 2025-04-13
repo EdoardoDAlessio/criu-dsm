@@ -15,14 +15,12 @@ host=$2
 
 cd ~/${app}
 
-#time ~/print_ip.sh ${app} ${app} ;
-#time sudo python3 /users/nkhusain/TransProc_c/criu-3.15/crit/crit  recode . ./aarch64/ aarch64 ${app} ./bin/ y 
 
-sudo rm -r aarch64/ ; mkdir aarch64; cp *.img  aarch64/
+sudo rm -r images/ ; mkdir images; cp *.img  images/
 
 #### Remote Node 1
-ssh ${host} -C "rm -r ~/aarch64; sudo killall -9 ${app}" ;  
-scp -r ./aarch64 ${host}:
+ssh ${host} -C "rm -r ~/images; sudo killall -9 ${app}" ;  
+scp -r ./images ${host}:
 ssh ${host} -C "echo ${app} > /tmp/cmd"
 
 
@@ -33,8 +31,8 @@ fi
 
 #### Remote Node 2
 echo "========Transfer to  3rd Node====="
-ssh $3 -C "rm -r ~/aarch64/*.img; sudo killall -9 $app; mkdir ~/aarch64/" ; 
-scp  -r *.img ${3}:~/aarch64/
+ssh $3 -C "rm -r ~/images/*.img; sudo killall -9 $app; mkdir ~/images/" ; 
+scp  -r *.img ${3}:~/images/
 ssh ${3} -C "echo $app > /tmp/cmd"
 
 if [ -z "${4}" ];
@@ -44,8 +42,8 @@ fi
 
 ### Remote Node 3
 
-ssh $4 -C "rm -r ~/aarch64/*.img; sudo killall -9 $app; mkdir ~/aarch64/" ; 
-scp  -r *.img ${4}:~/aarch64/
+ssh $4 -C "rm -r ~/images/*.img; sudo killall -9 $app; mkdir ~/images/" ; 
+scp  -r *.img ${4}:~/images/
 ssh ${4} -C "echo $app > /tmp/cmd"
 
 if [ -z "${5}" ];
@@ -55,6 +53,6 @@ fi
 
 
 
-ssh $5 -C "rm -r ~/aarch64/*.img; sudo killall -9 $app; mkdir ~/aarch64/" ; 
-scp  -r *.img ${5}:~/aarch64/
+ssh $5 -C "rm -r ~/images/*.img; sudo killall -9 $app; mkdir ~/images/" ; 
+scp  -r *.img ${5}:~/images/
 ssh ${5} -C "echo $app > /tmp/cmd"

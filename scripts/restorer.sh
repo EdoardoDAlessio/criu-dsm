@@ -14,7 +14,7 @@ do
 
        cd ~/$app;
        rm  -r *.img ;
-       cp ../aarch64/*.img . ;
+       cp ../images/*.img . ;
 
        python3 ~/criu-dsm/scripts/thread_filter.py $node_id ;
        sudo ~/criu-dsm/criu-3.15/criu/criu  restore -vvv --shell-job;
