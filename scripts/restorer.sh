@@ -1,7 +1,7 @@
 
 do_start_dsm_client(){
 	sudo killall -9 dsm_client
-	sudo ~/criu-dsm/criu-3.15/dsm_client/dsm_client listen 1 2>&1 > /dev/null
+	sudo ~/criu-dsm/criu-3.15/dsm_client/dsm_client listen 1 2>&1 > restore_log.txt
 }
 
 while [ 1 ] ;
@@ -17,5 +17,7 @@ do
        cp ../images/*.img . ;
 
        python3 ~/criu-dsm/scripts/thread_filter.py $node_id ;
-       sudo ~/criu-dsm/criu-3.15/criu/criu  restore -vvv --shell-job;
+
+       echo "Images changed"
+       sudo ~/criu-dsm/criu-3.15/criu/criu restore -vvvv --shell-job;
 done
