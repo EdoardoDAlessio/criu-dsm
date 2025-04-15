@@ -20,4 +20,5 @@ do
 
        echo "Images changed"
        sudo ~/criu-dsm/criu-3.15/criu/criu restore -vvvv --shell-job;
+
 done
