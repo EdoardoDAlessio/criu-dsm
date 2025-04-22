@@ -87,7 +87,7 @@ procmaps_iterator* pmparser_parse(int pid){
 	char addr1[20],addr2[20], perm[8], offset[20], dev[10],inode[30],pathname[PATH_MAX];
 	while( !feof(file) ){
 		if (fgets(buf,PROCMAPS_LINE_MAX_LENGTH,file) == NULL){
-			fprintf(stderr,"pmparser : fgets failed, %s\n",strerror(errno));
+			fprintf(stderr,"pmparser : fgets, %s\n",strerror(errno));
 	//		return NULL;
 		}
 		//allocate a node

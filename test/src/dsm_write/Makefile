@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Wno-implicit-function-declaration -Wno-unused-but-set-variable
 LDFLAGS = -lpthread
 
-SRCS = dsm_write.c radix.c time.c 
+SRCS = my_app.c radix.c time.c
 OBJS = $(SRCS:.c=.o)
 EXEC = dsm_write
 
